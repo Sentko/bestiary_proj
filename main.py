@@ -51,11 +51,15 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         life_ex_desc= input("Quelle est l'espérance de vie de votre entrée ? -").strip()
         sc_bhvr_desc= input("Comment se comporte votre entrée auprès des siens ? -").strip()
         preds_desc  = input("Votre entrée a-t-elle plusieurs prédateurs ? 1 pour oui, 2 si elle n'en a qu'un. -").strip()
-        if preds_desc == 1:
-            print("(Nommez bien les prédateurs dans l'ordre du plus dangereux au moins dangereux)")            
-            preds_list = []
-            pass
+        if preds_desc == 1:           
+            preds_desc = lister(input('Combien de prédateurs comptez-vous ajouter ? -'))
+        if preds_desc == 2:
+            preds_desc = input('Quel est le nom du prédateur en question ? -')
         preys_desc  = input("Votre entrée a-t-elle plusieurs proies ? 1 pour oui, 2 pour non. -").strip()
+        if preys_desc == 1:
+            preys_desc = lister(input('Combien de proies comptez-vous ajouter ? -'))
+        if preys_desc == 2:
+            preys_desc = input('Quel est le nom de la proie en question ? -')
 
     #def search_entry():
         #...
@@ -66,14 +70,13 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
     #def stop_bestiary():
         #...
     
-    def input_lister(num):               #Used to store multiple inputs in a list for entry creation
+    def lister(num):               #Used to store multiple inputs in a list for entry creation
         il_iterator = 1
         final_list = []
         while il_iterator <= num:
-            final_list.append(input(f'Quel est le nom du prédateur n°{il_iterator} ?'))
+            final_list.append(input(f'Quel est le nom du n°{il_iterator} ?').strip())
             il_iterator += 1
-            pass
-        pass
+        return final_list
         
     pr_menu_acts = {1:'load_save',      2:'create_entry', #int:func, int:func
                     3:'search_entry',   4:'modify_entry', #int:func, int:func
