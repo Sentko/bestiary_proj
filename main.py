@@ -60,6 +60,7 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
             preys_desc = lister(input('Combien de proies comptez-vous ajouter ? -'))
         if preys_desc == 2:
             preys_desc = input('Quel est le nom de la proie en question ? -')
+        #MAKE A "ENTRY" CLASS FROM THOSE
 
     #def search_entry():
         #...
