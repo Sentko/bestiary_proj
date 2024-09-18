@@ -38,19 +38,20 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         #...
         
     def create_entry():
+        name_desc, sc_name_desc, race_choice, phys_desc, diet_desc, nat_hab_desc, life_ex_desc, sc_bhvr_desc, preds_desc, preys_desc = None
         print('''Vous allez être emmenés dans le processus de création de fiches.
               Lorsque votre entrée n'a pas la chose qui vous est demandé, appuyez simplement
               sur Entréee sans donner de réponse. ''')
         name_desc   = input('Quel est le nom à attribuer à votre entrée ? -').strip()
-        sc_name_desc= input("Votre entrée a-t-elle un nom scientifique ? 1 pour oui, 2 pour non") #NEEDS FOLLOW UP
-        race_choice = input('Quelle est la race de votre entrée ? -')
-        phys_desc   = input('A quoi ressemble physiquement votre entrée ? -')
-        diet_desc   = input('Quel est le régime de votre entrée ? -')    #CLASSES ?
-        nat_hab_desc= input("Quel est l'habitat naturel de votre entrée ? -")
-        life_ex_desc= input("Quelle est l'espérance de vie de votre entrée ? -")
-        sc_bhvr_desc= input("Comment se comporte votre entrée auprès des siens ? -")
-        preds_desc  = input("Votre entrée a-t-elle des prédateurs ? 1 pour oui, 2 pour non. -") #NEEDS FOLLOW UP
-        preys_desc  = input("Votre entrée a-t-elle des proies ? 1 pour oui, 2 pour non. -") #NEEDS FOLLOW UP
+        sc_name_desc= input("Quel est le nom scientifique de votre entrée ? -").strip()
+        race_choice = input('Quelle est la race de votre entrée ? -').strip()
+        phys_desc   = input('A quoi ressemble physiquement votre entrée ? -').strip()
+        diet_desc   = input('Quel est le régime de votre entrée ? -').strip()    #CLASSES ?
+        nat_hab_desc= input("Quel est l'habitat naturel de votre entrée ? -").strip()
+        life_ex_desc= input("Quelle est l'espérance de vie de votre entrée ? -").strip()
+        sc_bhvr_desc= input("Comment se comporte votre entrée auprès des siens ? -").strip()
+        preds_desc  = input("Votre entrée a-t-elle plusieurs prédateurs ? -").strip() #NEEDS FOLLOW UP
+        preys_desc  = input("Votre entrée a-t-elle plusieurs proies ? -").strip() #NEEDS FOLLOW UP
 
     #def search_entry():
         #...
