@@ -1,9 +1,9 @@
 class Entry():          #Basic Bestiary Entry
     def __init__(self, name, race,
-                 phys_desc, diet=None,
-                 nat_hab=None, life_expec=None,
-                 soc_bhviour=None, predators=None,
-                 preys=None, sc_name=None):
+                 phys_desc, diet,
+                 nat_hab, life_expec,
+                 soc_bhviour, predators,
+                 preys, sc_name):
         self.name = name
         self.race = race
         self.nat_hab = nat_hab
@@ -17,7 +17,7 @@ class Entry():          #Basic Bestiary Entry
         
         
 class Carnivore(Entry): #DIET=CARNIVORE
-    def __init__(self, is_pred, hnting_tech=None):  #Hunting techniques should be unique to predators. There is still the case of scavengers like vultures and such. 
+    def __init__(self, is_pred, hnting_tech):  #Hunting techniques should be unique to predators. There is still the case of scavengers like vultures and such. 
                                                     #In that case, hnting_tech should equal None, while preys should be f'Every animal found in {lower(self.nat_hab)}'
         self.is_pred = is_pred
         self.hnting_tech = hnting_tech
@@ -33,7 +33,7 @@ class Herbivore(Entry): #DIET=HERBIVORE
                          self.predators, self.sc_name)
         
 class Omnivore(Entry):  #DIET=OMNIVORE
-    def __init__(self, is_pred, favoured_nonmeat=None, hnting_tech=None):
+    def __init__(self, is_pred, favoured_nonmeat, hnting_tech):
         self.is_pred = is_pred
         self.favoured_nonmeat = favoured_nonmeat
         self.hnting_tech = hnting_tech
