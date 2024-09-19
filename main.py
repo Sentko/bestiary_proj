@@ -38,29 +38,28 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         #...
         
     def create_entry():
-        name_desc, sc_name_desc, race_choice, phys_desc, diet_desc, nat_hab_desc, life_ex_desc, sc_bhvr_desc, preds_desc, preys_desc = None
-        print('''Vous allez être emmenés dans le processus de création de fiches.
-              Lorsque votre entrée n'a pas la chose qui vous est demandé, appuyez simplement
-              sur Entréee sans donner de réponse. ''')
-        name_desc   = input('Quel est le nom à attribuer à votre entrée ? -').strip() #str
-        sc_name_desc= input("Quel est le nom scientifique de votre entrée ? -").strip() #str
-        race_choice = input('Quelle est la race de votre entrée ? -').strip() #str
-        phys_desc   = input('A quoi ressemble physiquement votre entrée ? -').strip() #str
-        diet_desc   = input('Quel est le régime de votre entrée ? -').strip()    #CLASSES ?
-        nat_hab_desc= input("Quel est l'habitat naturel de votre entrée ? -").strip()
-        life_ex_desc= input("Quelle est l'espérance de vie de votre entrée ? -").strip()
-        sc_bhvr_desc= input("Comment se comporte votre entrée auprès des siens ? -").strip()
-        preds_desc  = input("Votre entrée a-t-elle plusieurs prédateurs ? 1 pour oui, 2 si elle n'en a qu'un. -").strip()
-        if preds_desc == 1:           
-            preds_desc = lister(input('Combien de prédateurs comptez-vous ajouter ? -'))
-        if preds_desc == 2:
-            preds_desc = input('Quel est le nom du prédateur en question ? -')
-        preys_desc  = input("Votre entrée a-t-elle plusieurs proies ? 1 pour oui, 2 pour non. -").strip()
-        if preys_desc == 1:
-            preys_desc = lister(input('Combien de proies comptez-vous ajouter ? -'))
-        if preys_desc == 2:
-            preys_desc = input('Quel est le nom de la proie en question ? -')
-        #MAKE A "ENTRY" CLASS FROM THOSE
+        print('''A partir d'ici, le programme va vous demander de lui dire le nom d'une catégorie
+              puis vous demander la description correspondante. Il est recommandé de commencer par
+              les plus importantes, dans leur ordre d'importance. Je recommande Nom, espérance de vie,
+              habitat naturel, puis description physique au minimum.    
+              Dans l'ordre, par exemple : "Nom", "Loup" pour donner le nom "Loup" à votre entrée.
+              
+              Si vous faites une erreur, vous pourrez modifier l'entrée de bestiaire par la suite.
+              ''')
+        entry_creator_dict = {}
+        category = ""
+        desc = ""
+        while True:
+            category = input('Quel est le nom de votre première catégorie ? - ')
+            desc = input('Quelle description voulez-vous donner à cette catégorie ? - ')
+            entry_creator_dict[category] = desc
+            print(entry_creator_dict)
+            continuer = input('Entrez 1 si vous voulez ajouter une catégorie. - ')
+            if continuer == "1":
+                continue
+            else:
+                break
+    create_entry()
 
     #def search_entry():
         #...
@@ -75,7 +74,7 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         il_iterator = 1
         final_list = []
         while il_iterator <= num:
-            final_list.append(input(f'Quel est le nom du n°{il_iterator} ?').strip())
+            final_list.append(input(f'Quel est le nom du n°{il_iterator} ? - ').strip())
             il_iterator += 1
         return final_list
         
