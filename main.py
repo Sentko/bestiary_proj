@@ -42,10 +42,10 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         print('''Vous allez être emmenés dans le processus de création de fiches.
               Lorsque votre entrée n'a pas la chose qui vous est demandé, appuyez simplement
               sur Entréee sans donner de réponse. ''')
-        name_desc   = input('Quel est le nom à attribuer à votre entrée ? -').strip()
-        sc_name_desc= input("Quel est le nom scientifique de votre entrée ? -").strip()
-        race_choice = input('Quelle est la race de votre entrée ? -').strip()
-        phys_desc   = input('A quoi ressemble physiquement votre entrée ? -').strip()
+        name_desc   = input('Quel est le nom à attribuer à votre entrée ? -').strip() #str
+        sc_name_desc= input("Quel est le nom scientifique de votre entrée ? -").strip() #str
+        race_choice = input('Quelle est la race de votre entrée ? -').strip() #str
+        phys_desc   = input('A quoi ressemble physiquement votre entrée ? -').strip() #str
         diet_desc   = input('Quel est le régime de votre entrée ? -').strip()    #CLASSES ?
         nat_hab_desc= input("Quel est l'habitat naturel de votre entrée ? -").strip()
         life_ex_desc= input("Quelle est l'espérance de vie de votre entrée ? -").strip()
