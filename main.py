@@ -8,17 +8,17 @@ But :
 ''' 
 
 def main():
-    entry_dict = {}
+    entry_dict = {'Wolf': {'a': 'a', 'b': 'b'}}
     print('''Welcome to the Ad Infinitum Bestiary.
 
 
 
 Press "1" if you want to LOAD a save.                                       [Pas encore implémenté]
-Press "2" if you want to CREATE an entry.                                   [Pas encore implémenté]
+Press "2" if you want to CREATE an entry.                                   
 Press "3" if you want to LOOK UP all entries that have been written.        [Pas encore implémenté]
 Press "4" if you want to MODIFY an already existing entry.                  [Pas encore implémenté]
 Press "5" if you want to SAVE your current Bestiary.                        [Pas encore implémenté]
-Press "6" if you want to EXIT the Bestiary.                                 [Pas encore implémenté]
+Press "6" if you want to EXIT the Bestiary.                                 
 ''')
     
     #def load_save():
@@ -50,15 +50,27 @@ If you make a mistake somewhere, you will be able to modify the entry's category
             continuer = input('Input 1 if you want to add more categories. - ')
             if continuer == "1":
                 continue
-            else:
-                break
-        while True:
-            if entry_name not in entry_dict:
-                entry_dict[entry_name] = entry_cat_desc
-                break
-            else:
+            else : break
+        
+                
+        if entry_name not in entry_dict:
+            entry_dict[entry_name] = entry_cat_desc
+            print (f'{entry_name}: {entry_dict[entry_name]}')
+        else:
+            while True:
                 entry_name = input("This name already exists within the dictionary. Please choose a new one : - ")
-                continue
+                if entry_name not in entry_dict:
+                    entry_dict[entry_name] = entry_cat_desc
+                    print(entry_dict)
+                    print (f'{entry_name}: {entry_dict[entry_name]}')
+                    break
+                else:
+                    continue
+        #input "another entry ?" 
+        #if yes recursion
+        #else main(). SHOULD MAKE THE MAIN MENU A MENU() FUNC
+            
+        
 
     #def search_entry():
         #...
