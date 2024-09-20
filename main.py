@@ -7,7 +7,7 @@ But :
         3) Pouvoir modifier une fiche déjà existante
 ''' 
 
-def __main__():
+def main():
     entry_dict = {}
     print('''Welcome to the Ad Infinitum Bestiary.
 
@@ -26,14 +26,14 @@ Press "6" if you want to EXIT the Bestiary.                                 [Pas
         
     def create_entry():
         print('''From there, you will be asked a name for your entry.
-              After that, you will be asked the name of a category (for example, life expectancy),
-              Then the description fit for that category (for example, 10 years).
-              You will finally be asked whether or not you want to make another category.
+After that, you will be asked the name of a category (for example, life expectancy),
+Then the description fit for that category (for example, 10 years).
+You will finally be asked whether or not you want to make another category.
               
-              I recommend starting with the most important, as they will be ordered by which
-              one you decided to input first.
+I recommend starting with the most important, as they will be ordered by which
+one you decided to input first.
 
-              If you make a mistake somewhere, you will be able to modify the entry's category or description later.
+If you make a mistake somewhere, you will be able to modify the entry's category or description later.
               
               
               ''')
@@ -69,9 +69,9 @@ Press "6" if you want to EXIT the Bestiary.                                 [Pas
     def stop_bestiary():
         exit()
         
-    pr_menu_acts = {'1':'load_save',      '2':'create_entry', #int:func, int:func
+    pr_menu_acts = {'1':'load_save',      '2': create_entry, #int:func, int:func
                     '3':'search_entry',   '4':'modify_entry', #int:func, int:func
-                    '5':'Sauvegarder',    '6':'stop_bestiary'}  #int:func, int:func
+                    '5':'Sauvegarder',    '6': stop_bestiary}  #int:func, int:func
     
     while True :
         ac_choice = pr_menu_acts.get(input('Your choice -> '))
@@ -83,5 +83,5 @@ Press "6" if you want to EXIT the Bestiary.                                 [Pas
             
             
             
-if __name__ == __main__():
-    __main__()
+if __name__ == '__main__':
+    main()
