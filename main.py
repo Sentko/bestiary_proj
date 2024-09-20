@@ -5,60 +5,60 @@ But :
             1.1) Si doublon, prévenir la personne en question
         2) Pouvoir faire une recherche de toutes les espèces déjà existantes
         3) Pouvoir modifier une fiche déjà existante
-        
-        
-
-    ENTRY : 
-        - Nom commun = STR
-        - Nom officiel = STR
-        - Race = STR
-        - Habitat naturel = STR
-        - Description physique = STR
-        - Espérance de vie estimée = INT
-        - Régime = STR 
-            - Si carnivore : Techniques de chasse emblématiques STR
-        - Comportement social = STR
 ''' 
 
 def __main__():
     entry_dict = {}
-    print('''Bonjour ! Bienvenue dans le Bestiaire Ad Infinitum.
+    print('''Welcome to the Ad Infinitum Bestiary.
 
 
 
-Tapez "1" si vous avez une SAUVEGARDE.                                      [Pas encore implémenté]
-Tapez "2" si vous voulez CRÉER une fiche.                                   [Pas encore implémenté]
-Tapez "3" si vous voulez faire une RECHERCHE dans les fiches déjà créées.   [Pas encore implémenté]
-Tapez "4" si vous voulez MODIFIER une fiche déjà existante.                 [Pas encore implémenté]
-Tapez "5" si vous voulez SAUVEGARDER votre Bestiaire.                       [Pas encore implémenté]
-Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas encore implémenté]
+Press "1" if you want to LOAD a save.                                       [Pas encore implémenté]
+Press "2" if you want to CREATE an entry.                                   [Pas encore implémenté]
+Press "3" if you want to LOOK UP all entries that have been written.        [Pas encore implémenté]
+Press "4" if you want to MODIFY an already existing entry.                  [Pas encore implémenté]
+Press "5" if you want to SAVE your current Bestiary.                        [Pas encore implémenté]
+Press "6" if you want to EXIT the Bestiary.                                 [Pas encore implémenté]
 ''')
     
     #def load_save():
         #...
         
     def create_entry():
-        print('''A partir d'ici, le programme va vous demander de lui dire le nom de votre entrée, 
-              et ensuite vous demandera dans l'ordre une catégorie puis la description correspondante.
-              Il est recommandé de commencer par les plus importantes, dans leur ordre d'importance. 
-              Je recommande espérance de vie, habitat naturel, puis description physique au minimum.    
-              Par exemple : "espérance de vie" puis "10 ans" créera une ligne "espérance de vie : 10 ans".
+        print('''From there, you will be asked a name for your entry.
+              After that, you will be asked the name of a category (for example, life expectancy),
+              Then the description fit for that category (for example, 10 years).
+              You will finally be asked whether or not you want to make another category.
               
-              Si vous faites une erreur, vous pourrez modifier l'entrée de bestiaire par la suite.
+              I recommend starting with the most important, as they will be ordered by which
+              one you decided to input first.
+
+              If you make a mistake somewhere, you will be able to modify the entry's category or description later.
+              
+              
               ''')
-        entry_creator_dict = {}
+        entry_name = input("What is your entry's name ? - ")
+        entry_cat_desc = {}
         category = ""
         desc = ""
+        loop_counter = 0
         while True:
-            category = input('Quel est le nom de votre première catégorie ? - ')
-            desc = input('Quelle description voulez-vous donner à cette catégorie ? - ')
-            entry_creator_dict[category] = desc
-            print(entry_creator_dict)
-            continuer = input('Entrez 1 si vous voulez ajouter une catégorie. - ')
+            loop_counter += 1
+            category = input(f'What is the name of category n°{loop_counter} ? - ')
+            desc = input(f'What is the description fit for the category called "{category}" ? - ')
+            entry_cat_desc[category] = desc
+            continuer = input('Input 1 if you want to add more categories. - ')
             if continuer == "1":
                 continue
             else:
                 break
+        while True:
+            if entry_name not in entry_dict:
+                entry_dict[entry_name] = entry_cat_desc
+                break
+            else:
+                entry_name = input("This name already exists within the dictionary. Please choose a new one : - ")
+                continue
 
     #def search_entry():
         #...
@@ -68,24 +68,16 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         #...
     def stop_bestiary():
         exit()
-    
-    def lister(num):               #Used to store multiple inputs in a list for entry creation
-        il_iterator = 1
-        final_list = []
-        while il_iterator <= num:
-            final_list.append(input(f'Quel est le nom du n°{il_iterator} ? - ').strip())
-            il_iterator += 1
-        return final_list
         
     pr_menu_acts = {1:'load_save',      2:'create_entry', #int:func, int:func
                     3:'search_entry',   4:'modify_entry', #int:func, int:func
                     5:'Sauvegarder',    6:'stop_bestiary'}  #int:func, int:func
     
     while True :
-        ac_choice = pr_menu_acts.get(input('Votre choix -> '))
+        ac_choice = pr_menu_acts.get(input('Your choice -> '))
         if ac_choice is not None:                   
-            return False                            #Casse la boucle
-        print('''Votre réponse ne correspond à aucune des options.
+            break                            #Breaks the loop
+        print('''Your answer is not valid.
                   ''')
     ac_choice()
             
