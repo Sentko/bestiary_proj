@@ -69,9 +69,9 @@ Press "6" if you want to EXIT the Bestiary.                                 [Pas
     def stop_bestiary():
         exit()
         
-    pr_menu_acts = {1:'load_save',      2:'create_entry', #int:func, int:func
-                    3:'search_entry',   4:'modify_entry', #int:func, int:func
-                    5:'Sauvegarder',    6:'stop_bestiary'}  #int:func, int:func
+    pr_menu_acts = {'1':'load_save',      '2':'create_entry', #int:func, int:func
+                    '3':'search_entry',   '4':'modify_entry', #int:func, int:func
+                    '5':'Sauvegarder',    '6':'stop_bestiary'}  #int:func, int:func
     
     while True :
         ac_choice = pr_menu_acts.get(input('Your choice -> '))
