@@ -38,11 +38,11 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         #...
         
     def create_entry():
-        print('''A partir d'ici, le programme va vous demander de lui dire le nom d'une catégorie
-              puis vous demander la description correspondante. Il est recommandé de commencer par
-              les plus importantes, dans leur ordre d'importance. Je recommande Nom, espérance de vie,
-              habitat naturel, puis description physique au minimum.    
-              Dans l'ordre, par exemple : "Nom", "Loup" pour donner le nom "Loup" à votre entrée.
+        print('''A partir d'ici, le programme va vous demander de lui dire le nom de votre entrée, 
+              et ensuite vous demandera dans l'ordre une catégorie puis la description correspondante.
+              Il est recommandé de commencer par les plus importantes, dans leur ordre d'importance. 
+              Je recommande espérance de vie, habitat naturel, puis description physique au minimum.    
+              Par exemple : "espérance de vie" puis "10 ans" créera une ligne "espérance de vie : 10 ans".
               
               Si vous faites une erreur, vous pourrez modifier l'entrée de bestiaire par la suite.
               ''')
@@ -59,7 +59,6 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
                 continue
             else:
                 break
-    create_entry()
 
     #def search_entry():
         #...
@@ -67,8 +66,8 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         #...
     #def overwrite_save():
         #...
-    #def stop_bestiary():
-        #...
+    def stop_bestiary():
+        exit()
     
     def lister(num):               #Used to store multiple inputs in a list for entry creation
         il_iterator = 1
@@ -80,7 +79,7 @@ Tapez "6" si vous voulez QUITTER le Bestiaire.                              [Pas
         
     pr_menu_acts = {1:'load_save',      2:'create_entry', #int:func, int:func
                     3:'search_entry',   4:'modify_entry', #int:func, int:func
-                    5:'Sauvegarder',    6:'stop_program'}  #int:func, int:func
+                    5:'Sauvegarder',    6:'stop_bestiary'}  #int:func, int:func
     
     while True :
         ac_choice = pr_menu_acts.get(input('Votre choix -> '))
