@@ -8,18 +8,7 @@ But :
 ''' 
 
 def main():
-    entry_dict = {'Wolf': {'a': 'a', 'b': 'b'}}
-    print('''Welcome to the Ad Infinitum Bestiary.
-
-
-
-Press "1" if you want to LOAD a save.                                       [Pas encore implémenté]
-Press "2" if you want to CREATE an entry.                                   
-Press "3" if you want to LOOK UP all entries that have been written.        [Pas encore implémenté]
-Press "4" if you want to MODIFY an already existing entry.                  [Pas encore implémenté]
-Press "5" if you want to SAVE your current Bestiary.                        [Pas encore implémenté]
-Press "6" if you want to EXIT the Bestiary.                                 
-''')
+    entry_dict = {'Loup': {'a': 'a', 'b': 'b'}}
     
     #def load_save():
         #...
@@ -85,13 +74,26 @@ If you make a mistake somewhere, you will be able to modify the entry's category
                     '3':'search_entry',   '4':'modify_entry', #int:func, int:func
                     '5':'Sauvegarder',    '6': stop_bestiary}  #int:func, int:func
     
-    while True :
-        ac_choice = pr_menu_acts.get(input('Your choice -> '))
-        if ac_choice is not None:                   
-            break                            #Breaks the loop
-        print('''Your answer is not valid.
+    def main_menu():
+        print('''Welcome to the Ad Infinitum Bestiary.
+
+
+
+Press "1" if you want to LOAD a save.                                       [Pas encore implémenté]
+Press "2" if you want to CREATE an entry.                                   
+Press "3" if you want to LOOK UP all entries that have been written.        [Pas encore implémenté]
+Press "4" if you want to MODIFY an already existing entry.                  [Pas encore implémenté]
+Press "5" if you want to SAVE your current Bestiary.                        [Pas encore implémenté]
+Press "6" if you want to EXIT the Bestiary.                                 
+''')
+        while True :
+            ac_choice = pr_menu_acts.get(input('Your choice -> '))
+            if ac_choice is not None:                   
+                break                            #Breaks the loop
+            print('''Your answer is not valid.
                   ''')
-    ac_choice()
+        ac_choice()
+    main_menu()
             
             
             
