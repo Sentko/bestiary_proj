@@ -84,7 +84,7 @@ Press "6" if you want to EXIT the Bestiary.
 ''')
     while True :
         ac_choice = pr_menu_acts.get(input('Your choice -> '))
-        if ac_choice is not None:                   
+        if ac_choice is not None:
             break
         print('''Your answer is not valid.
             ''')

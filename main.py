@@ -1,4 +1,4 @@
-from functions import main_menu
+from bestiary import main_menu
 
 def main():
 
