@@ -36,8 +36,8 @@ def create_entry(): #Function that creates entries
 entry_dict = {}
 
 #def load_save():
-        #...
- #def search_entry():
+    #...
+#def search_entry():
     #...
 #def modify_entry():
     #...
@@ -71,7 +71,7 @@ pr_menu_acts = {'1':'load_save',      '2': create_callback, #int:func, int:func
                 '5':'save',           '6': stop_bestiary}  #int:func, int:func
 
 def main_menu():
-        print('''Welcome to the Ad Infinitum Bestiary.
+    print('''Welcome to the Ad Infinitum Bestiary.
 
 
 
@@ -82,10 +82,10 @@ Press "4" if you want to MODIFY an already existing entry.                  [Pas
 Press "5" if you want to SAVE your current Bestiary.                        [Pas encore implémenté]
 Press "6" if you want to EXIT the Bestiary.                                 
 ''')
-        while True :
-            ac_choice = pr_menu_acts.get(input('Your choice -> '))
-            if ac_choice is not None:                   
-                break
-            print('''Your answer is not valid.
-                  ''')
-        ac_choice()
+    while True :
+        ac_choice = pr_menu_acts.get(input('Your choice -> '))
+        if ac_choice is not None:                   
+            break
+        print('''Your answer is not valid.
+            ''')
+    ac_choice()
