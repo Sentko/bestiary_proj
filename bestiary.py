@@ -1,3 +1,5 @@
+import json
+
 def create_entry(): #Function that creates entries
     entry_name = input("What is your entry's name ? - ").lower()
     entry_cat_desc = {}
@@ -32,6 +34,14 @@ def create_entry(): #Function that creates entries
         create_entry()
     main_menu()
 
+def menu_getinput(): #Checks validity of menu input and executes corresponding functions
+    while True:
+        ac_choice = pr_menu_acts.get(input('Your choice -> '))
+        if ac_choice is not None:
+            break
+        print('''Your answer is not valid.
+            ''')
+    ac_choice()
 
 entry_dict = {}
 
@@ -41,7 +51,7 @@ entry_dict = {}
     #...
 #def modify_entry():
     #...
-#def overwrite_save():
+#def save_dict():
     #...
 def stop_bestiary():
     exit()
@@ -60,15 +70,8 @@ If you make a mistake somewhere, you will be able to modify the entry's category
               
               ''')
     create_entry()
-        
 
 
-
-
-
-pr_menu_acts = {'1':'load_save',      '2': create_callback, #int:func, int:func
-                '3':'search_entry',   '4':'modify_entry', #int:func, int:func
-                '5':'save',           '6': stop_bestiary}  #int:func, int:func
 
 def main_menu():
     print('''Welcome to the Ad Infinitum Bestiary.
@@ -82,10 +85,9 @@ Press "4" if you want to MODIFY an already existing entry.                  [Pas
 Press "5" if you want to SAVE your current Bestiary.                        [Pas encore implémenté]
 Press "6" if you want to EXIT the Bestiary.                                 
 ''')
-    while True :
-        ac_choice = pr_menu_acts.get(input('Your choice -> '))
-        if ac_choice is not None:
-            break
-        print('''Your answer is not valid.
-            ''')
-    ac_choice()
+    menu_getinput()
+
+
+pr_menu_acts = {'1':'load_save',      '2': create_callback, #int:func, int:func
+                '3':'search_entry',   '4':'modify_entry', #int:func, int:func
+                '5':'save_dict',      '6': stop_bestiary}  #int:func, int:func
