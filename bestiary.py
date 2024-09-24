@@ -18,6 +18,7 @@ def create_entry(): #Function that creates entries
             
     if entry_name not in entry_dict:
         entry_dict[entry_name] = entry_cat_desc
+        print(entry_dict)
         print (f'{entry_name}: {entry_dict[entry_name]}')
     else:
         while True:
@@ -45,19 +46,43 @@ def menu_getinput(): #Checks validity of menu input and executes corresponding f
 
 entry_dict = {}
 
-#def load_save():
-    #...
+def load_save():
+    global entry_dict
+    newjson = input('plz name of savefile - ')
+    with open(f'{newjson}.json', "r") as George:
+        entry_dict = json.load(George)
+    main_menu()
+    
 #def search_entry():
     #...
 #def modify_entry():
     #...
-#def save_dict():
-    #...
+    
+def save_dict():
+    global entry_dict
+    newjson = input('plz name the savefile - ')
+    with open(f'{newjson}.json' , "w") as idk:
+        json.dump(entry_dict, idk)
+    main_menu()
+    # entry_dict= (content of the json)
+    
 def stop_bestiary():
+    emergency_save = input('Type 1 if you want to save before you leave the Bestiary. - ')
+    if emergency_save == '1':
+        save_dict()
+    emergency_save = input('''You didn't type 1. You have a second chance if needed, 
+                           type 1 to save your Bestiary before exiting. - ''')
+    if emergency_save == '1':
+        save_dict()
     exit()
 
 def create_callback(): #Calls create_entry()
-    print('''From there, you will be asked a name for your entry.
+    print('''
+
+----------------------------------------------------
+
+
+From there, you will be asked a name for your entry.
 After that, you will be asked the name of a category (for example, life expectancy),
 Then the description fit for that category (for example, 10 years).
 You will finally be asked whether or not you want to make another category.
@@ -78,16 +103,16 @@ def main_menu():
 
 
 
-Press "1" if you want to LOAD a save.                                       [Pas encore implémenté]
+Press "1" if you want to LOAD a save.                                       
 Press "2" if you want to CREATE an entry.                                   
-Press "3" if you want to LOOK UP all entries that have been written.        [Pas encore implémenté]
-Press "4" if you want to MODIFY an already existing entry.                  [Pas encore implémenté]
-Press "5" if you want to SAVE your current Bestiary.                        [Pas encore implémenté]
+Press "3" if you want to LOOK UP all entries that have been written.        [W.I.P]
+Press "4" if you want to MODIFY an already existing entry.                  [W.I.P]
+Press "5" if you want to SAVE your current Bestiary.                        
 Press "6" if you want to EXIT the Bestiary.                                 
 ''')
     menu_getinput()
 
 
-pr_menu_acts = {'1':'load_save',      '2': create_callback, #int:func, int:func
+pr_menu_acts = {'1':load_save,        '2': create_callback, #int:func, int:func
                 '3':'search_entry',   '4':'modify_entry', #int:func, int:func
-                '5':'save_dict',      '6': stop_bestiary}  #int:func, int:func
+                '5':save_dict,        '6': stop_bestiary}  #int:func, int:func
