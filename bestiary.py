@@ -35,9 +35,9 @@ def create_entry(): #Function that creates entries
         create_entry()
     main_menu()
 
-def menu_getinput(): #Checks validity of menu input and executes corresponding functions
+def menu_getinput(menu_choice): #Checks validity of menu input and executes corresponding functions
     while True:
-        ac_choice = pr_menu_acts.get(input('Your choice -> '))
+        ac_choice = menu_choice.get(input('Your choice -> '))
         if ac_choice is not None:
             break
         print('''Your answer is not valid.
@@ -54,17 +54,20 @@ def load_save():
     main_menu()
     
 #def search_entry():
-    #...
+    #list_all_entries()             NEEDS DEFINITION
+    #show_entry()                   NEEDS DEFINITION
+
 #def modify_entry():
-    #...
+    #list_all_entries()             NEEDS DEFINITION
+    #show_entry()                   NEEDS DEFINITION
+    #choose_category_to_modify()    NEEDS DEFINITION
     
-def save_dict():
+def save_dict(): 
     global entry_dict
     newjson = input('plz name the savefile - ')
     with open(f'{newjson}.json' , "w") as idk:
         json.dump(entry_dict, idk)
     main_menu()
-    # entry_dict= (content of the json)
     
 def stop_bestiary():
     emergency_save = input('Type 1 if you want to save before you leave the Bestiary. - ')
@@ -96,6 +99,8 @@ If you make a mistake somewhere, you will be able to modify the entry's category
               ''')
     create_entry()
 
+#def settings():
+    #
 
 
 def main_menu():
@@ -110,9 +115,10 @@ Press "4" if you want to MODIFY an already existing entry.                  [W.I
 Press "5" if you want to SAVE your current Bestiary.                        
 Press "6" if you want to EXIT the Bestiary.                                 
 ''')
-    menu_getinput()
+    menu_getinput(pr_menu_acts)
 
 
 pr_menu_acts = {'1':load_save,        '2': create_callback, #int:func, int:func
-                '3':'search_entry',   '4':'modify_entry', #int:func, int:func
-                '5':save_dict,        '6': stop_bestiary}  #int:func, int:func
+                '3':'search_entry',   '4':'modify_entry',   #int:func, int:func
+                '5':save_dict,        '6': stop_bestiary,   #int:func, int:func
+                '7':'settings'}                             #int:func
