@@ -1,39 +1,7 @@
 import json
+from start_menu_classes.entry import        ECreator
+from start_menu_classes.savesystem import   SaveManagement
 
-def create_entry(): #Function that creates entries
-    entry_name = input("What is your entry's name ? - ").lower()
-    entry_cat_desc = {}
-    category = ""
-    desc = ""
-    loop_counter = 0
-    while True:
-        loop_counter += 1
-        category = input(f'What is the name of category n°{loop_counter} ? - ')
-        desc = input(f'What is the description fit for the category called "{category}" ? - ')
-        entry_cat_desc[category] = desc
-        continuer = input('Input 1 if you want to add more categories. - ')
-        if continuer != "1":
-            break
-    
-            
-    if entry_name not in entry_dict:
-        entry_dict[entry_name] = entry_cat_desc
-        print(entry_dict)
-        print (f'{entry_name}: {entry_dict[entry_name]}')
-    else:
-        while True:
-            entry_name = input("This name already exists within the dictionary. Please choose a new one : - ").lower()
-            if entry_name in entry_dict:
-                continue
-            entry_dict[entry_name] = entry_cat_desc
-            print(entry_dict)
-            print (f'{entry_name}: {entry_dict[entry_name]}')
-            break
-            
-    entry_recursor = input('Input 1 to create another different entry. - ')
-    if entry_recursor == "1":
-        create_entry()
-    main_menu()
 
 def menu_getinput(menu_choice): #Checks validity of menu input and executes corresponding functions
     while True:
@@ -44,15 +12,13 @@ def menu_getinput(menu_choice): #Checks validity of menu input and executes corr
             ''')
     ac_choice()
 
-entry_dict = {}
-
-def load_save():
-    global entry_dict
-    newjson = input('plz name of savefile - ')
-    with open(f'{newjson}.json', "r") as George:
-        entry_dict = json.load(George)
-    main_menu()
+def load_save_callback():
+    SaveManagement.load_save(main_menu)
     
+def save_callback():
+    SaveManagement.save_bestiary(main_menu)
+    
+
 #def search_entry():
     #list_all_entries()             NEEDS DEFINITION
     #show_entry()                   NEEDS DEFINITION
@@ -62,27 +28,17 @@ def load_save():
     #show_entry()                   NEEDS DEFINITION
     #choose_category_to_modify()    NEEDS DEFINITION
     
-def save_dict(): 
-    global entry_dict
-    newjson = input('plz name the savefile - ')
-    with open(f'{newjson}.json' , "w") as idk:
-        json.dump(entry_dict, idk)
-    main_menu()
-    
 def stop_bestiary():
     emergency_save = input('Type 1 if you want to save before you leave the Bestiary. - ')
     if emergency_save == '1':
-        save_dict()
-    emergency_save = input('''You didn't type 1. You have a second chance if needed, 
-                           type 1 to save your Bestiary before exiting. - ''')
+        SaveManagement.save_bestiary(main_menu)
+    emergency_save = input('''\nYou didn't type 1. You have a second chance if needed.\nType 1 to save your Bestiary before exiting. - ''')
     if emergency_save == '1':
-        save_dict()
+        SaveManagement.save_bestiary(main_menu)
     exit()
 
-def create_callback(): #Calls create_entry()
-    print('''
-
-----------------------------------------------------
+def create_callback(): #Calls create_entry() after an explanation message
+    print('''\n\n----------------------------------------------------
 
 
 From there, you will be asked a name for your entry.
@@ -97,7 +53,7 @@ If you make a mistake somewhere, you will be able to modify the entry's category
               
               
               ''')
-    create_entry()
+    ECreator.create_entry(main_menu)
 
 #def settings():
     #
@@ -118,7 +74,7 @@ Press "6" if you want to EXIT the Bestiary.
     menu_getinput(pr_menu_acts)
 
 
-pr_menu_acts = {'1':load_save,        '2': create_callback, #int:func, int:func
-                '3':'search_entry',   '4':'modify_entry',   #int:func, int:func
-                '5':save_dict,        '6': stop_bestiary,   #int:func, int:func
+pr_menu_acts = {'1': load_save_callback,              '2': create_callback, #int:func, int:func
+                '3':'search_entry',                   '4':'modify_entry',   #int:func, int:func
+                '5': save_callback,                   '6': stop_bestiary,   #int:func, int:func
                 '7':'settings'}                             #int:func
