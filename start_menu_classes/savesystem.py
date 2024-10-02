@@ -5,16 +5,13 @@ import config
 
 class SaveManagement():
     
-    def save_bestiary(menu):
+    def save_bestiary():
         newjson = input('plz name the savefile - ')
-        with open(f'{newjson}.json' , "w") as idk:
-            json.dump(config.entry_dict, idk)
-        menu()
+        with open(f'{newjson}.json' , "w") as file:
+            json.dump(config.entry_dict, file)
         
     
-    def load_save(menu):                    #load function broken ?
+    def load_save():
         newjson = input('plz gib name of savefile - ')
-        with open(f'{newjson}.json', "r") as George:
-            config.entry_dict = json.load(George)
-        print('what is happening???')
-        menu()
+        with open(f'{newjson}.json', "r") as file:
+            config.entry_dict = json.load(file)
